@@ -1,0 +1,43 @@
+{
+  "features": [
+    "i_peak",
+    "p_w",
+    "pf",
+    "dpf",
+    "phase_deg",
+    "kurtosis",
+    "conduction_angle",
+    "cycle_stability",
+    "h2_h1",
+    "h3_h1",
+    "h5_h1",
+    "h7_h1",
+    "h9_h1",
+    "hf_noise_ratio",
+    "half_cycle_asym",
+    "vi_area",
+    "vi_width0",
+    "vi_mid_slope",
+    "vi_curvature",
+    "v_at_ipeak",
+    "inrush_ratio",
+    "settling_time",
+    "transient_energy",
+    "inrush_duration"
+  ],
+  "dropped": {
+    "skewness": "barely differs between types (eta² 0.05); its sign changes from home to home",
+    "i_rms": "redundant with p_w (rho 0.98); lower eta²",
+    "crest_factor": "redundant with kurtosis (rho 0.95); lower eta²",
+    "thd": "redundant with h3_h1 (rho 0.94); lower eta²",
+    "form_factor": "redundant with kurtosis (rho 0.93); lower eta²",
+    "q_var": "redundant with i_peak (rho 0.90); lower eta²"
+  },
+  "notes_for_04": [
+    "Impute NaN with the median inside the pipeline (fit on training folds only); no missing-indicator columns.",
+    "Never use flag columns as model inputs.",
+    "Sensitivity test 1: train with vs without flag_low_state / flag_low_amp rows (validation keeps all).",
+    "Sensitivity test 2: with vs without the 4 transient features.",
+    "Hard cases to check in the confusion matrix: Air Conditioner vs Fan; Microwave (two states)."
+  ]
+}
